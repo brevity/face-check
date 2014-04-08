@@ -1,0 +1,40 @@
+<template name='idxResults'>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Scrape Results</h1>
+      <div class="table-responsive">
+        <table class="table table-striped" id="data">
+          <thead>
+            <tr>
+              {{#each headers }}
+                {{> idxResultsHeader}}
+              {{/each}}
+            </tr>
+          </thead>
+          <tbody>
+              {{#each articles }}
+                {{> idxResultsRow}}
+              {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</template>
+
+<template name='idxResultsHeader'>
+<th>{{name}}</th>
+</template>
+<template name='idxResultsRow'>
+<tr id="article-{{_id}}">
+    <td>{{ _id }}</td>
+    <td>{{ pii }}</td>
+    <td>{{ title }}</td>
+    <td>{{ pmi }}</td>
+    <td><a href="#stats" class="stats">stats</a></td>
+    <td><a href="http://dx.doi.org/{{ doi }}" target="_blank">{{doi}}</a></td>
+  </tr>
+  <tr>
+    <td colspan="100" id="status-{{_id}}" class="hidden"><!-- http://stackoverflow.com/questions/398734/colspan-all-columns -->
+      <b>Some really great and important stufff..</b><p>of course this won't work if we need to do sorting.... hrmmmm.. maybe each little ....grrrr..</p>
+    </td>
+  </tr>
+</template>
